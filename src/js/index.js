@@ -1,3 +1,5 @@
+import '../scss/style.scss';
+
 async function getComponent() {
     const element = document.createElement('div');
     const { default: _ } = await import(/* webpackChunkName: "lodash" */ 'lodash');
@@ -10,3 +12,5 @@ async function getComponent() {
 getComponent().then(component => {
     document.body.appendChild(component);
 })
+
+defaultExport.printMe();
