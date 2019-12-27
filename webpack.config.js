@@ -4,6 +4,7 @@ const path = require('path');
 //additional plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 //module settings
 module.exports = {
@@ -15,7 +16,7 @@ module.exports = {
         app: './src/js/index.js',
         // print: './src/js/print.js',
         // style: '.src/js/style.js',
-        // style: '.src/scss/style.scss',
+        style: './src/scss/style.scss',
     },
     devtool: 'inline-source-map',
     devServer: {
@@ -28,6 +29,10 @@ module.exports = {
             title: 'Development',
             template: './app/index.html',
             inject: 'body'
+        }),
+        new MiniCssExtractPlugin({
+            filename: './css/[name].css',
+            chunkFilename: './css/[id].css',
         }),
     ],
 
@@ -47,13 +52,18 @@ module.exports = {
                     // Creates `style` nodes from JS strings
                     'style-loader',
                     // Translates CSS into CommonJS
-                    'css-loader',
+                    MiniCssExtractPlugin.loader, 'css-loader',
                     // Compiles Sass to CSS
                     'sass-loader',
+
                 ],
+            },
+            {
+            test: /\.(png|svg|jpg|gif)$/,
+                use: [
+                    'file-loader',
+                    ],
             },
         ],
     },
-
-
 };

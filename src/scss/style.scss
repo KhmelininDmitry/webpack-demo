@@ -1,7 +1,69 @@
-html, body {
-  height: 100%;
+@import 'normalize.scss';
+
+// === Mixins ===
+@mixin font-open-sans {
+  font-family: 'Open Sans', sans-serif;
+}
+// === / Mixins ===
+
+// === Variables ===
+$color-white: #ffffff;
+// === / Variables ===
+
+// === Common ===
+body {
+  @include font-open-sans;
 }
 
-body {
-  background-color: green;
+.section-outer {}
+
+.section-inner {
+  width: 1180px;
+  margin: auto;
 }
+// === / Common ===
+
+// === Section header ===
+.section-header {
+  background: url("../img/rectangle_5.png") no-repeat 50% 50%;
+  background-size: cover;
+
+  .section-inner {
+    height: 688px;
+  }
+
+  &-background-image {}
+
+
+  &-menu {
+    &__block {
+      text-align: center;
+      padding: 35px 20px 35px 20px;
+      color: #e0e0e0;
+      &:hover {
+        background-color: orangered;
+      }
+    }
+    &-outer {
+      /* Style for "Rectangle" */
+      width: 1249px;
+      height: 89px;
+      background-color: #000000;
+      opacity: 0.8;
+    }
+    &-inner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &-content {}
+  &-wrapper {
+    &__title {}
+    &__subtitle {}
+    &__button {}
+    &__banner {}
+  }
+}
+// === / Section header ===
