@@ -16,7 +16,7 @@ module.exports = {
         app: './src/js/index.js',
         // print: './src/js/print.js',
         // style: '.src/js/style.js',
-        style: './src/scss/style.scss',
+        // style: './src/scss/style.scss',
     },
     devtool: 'inline-source-map',
     devServer: {
@@ -49,13 +49,15 @@ module.exports = {
             {
                 test: /\.s[ac]ss$/i,
                 use: [
-                    // Creates `style` nodes from JS strings
-                    'style-loader',
-                    // Translates CSS into CommonJS
-                    MiniCssExtractPlugin.loader, 'css-loader',
-                    // Compiles Sass to CSS
-                    'sass-loader',
-
+                    {
+                        loader: MiniCssExtractPlugin.loader
+                    },
+                    {
+                        loader: 'css-loader'
+                    },
+                    {
+                        loader: 'sass-loader'
+                    },
                 ],
             },
             {
